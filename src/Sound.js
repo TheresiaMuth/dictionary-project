@@ -3,8 +3,6 @@ import React from "react";
 export default function Sound(props) {
   function handleClick() {
     let audio = new Audio(props.audio);
-    console.log("I am here at handleClick");
-    console.log(props.audio);
 
     audio.play();
   }
@@ -16,7 +14,7 @@ export default function Sound(props) {
         className="btn btn-outline-secondary"
         onClick={handleClick}
       >
-        <i class="bi bi-soundwave"></i>
+        <i className="bi bi-soundwave"></i>
       </button>
     )
   );

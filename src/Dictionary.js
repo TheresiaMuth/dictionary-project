@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Results from "./Results";
 import "./Dictionary.css";
 
 export default function Dictionary() {
-  let [searchterm, setSearchterm] = useState("");
+  let [searchterm, setSearchterm] = useState("magic");
   let [results, setResults] = useState(null);
 
   function handleResponse(response) {
@@ -13,15 +13,26 @@ export default function Dictionary() {
 
   function search(event) {
     event.preventDefault();
+    fetchDictionaryEntry();
+  }
 
+  function fetchDictionaryEntry() {
     //Documentation: https://dictionaryapi.dev/
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchterm}`;
-    axios.get(apiUrl).then(handleResponse);
+    axios
+      .get(apiUrl)
+      .then(handleResponse)
+      .catch((e) => console.error(e));
+    setSearchterm("");
   }
 
   function handleSearchtermChange(event) {
     setSearchterm(event.target.value);
   }
+
+  useEffect(() => {
+    fetchDictionaryEntry();
+  }, []);
 
   return (
     <div className="Dictionary">
@@ -36,6 +47,7 @@ export default function Dictionary() {
               autoComplete="off"
               placeholder="What Word are you looking for?"
               onChange={handleSearchtermChange}
+              value={searchterm}
             />
           </form>
         </div>

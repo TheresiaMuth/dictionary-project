@@ -1,0 +1,20 @@
+.Meaning h3 {
+  font-size: 28px;
+  line-height: 1.5;
+  color: #966544;
+  font-family: "Cormorant Unicase", serif;
+}
+
+.Meaning .definition {
+  margin-bottom: 4px;
+  color: #2c3639;
+}
+
+.Meaning .example {
+  opacity: 0.7;
+  color: #2c3639;
+  font-family: "Cormorant Infant", serif;
+  font-style: italic;
+  font-size: 19px;
+  margin-bottom: 4px;
+}

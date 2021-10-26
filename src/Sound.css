@@ -1,0 +1,19 @@
+.btn {
+  border-radius: 40px;
+  padding: 0 10px;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn:hover {
+  background: #2c3639;
+  border-color: none;
+  color: whitesmoke;
+}
+
+.bi {
+  font-size: 20px;
+}

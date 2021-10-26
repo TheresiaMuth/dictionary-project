@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Sound.css";
+
 export default function Sound(props) {
   function handleClick() {
     let audio = new Audio(props.audio);
@@ -14,7 +16,7 @@ export default function Sound(props) {
         className="btn btn-outline-secondary"
         onClick={handleClick}
       >
-        <i className="bi bi-soundwave"></i>
+        <i className="bi bi-volume-up-fill"></i>
       </button>
     )
   );

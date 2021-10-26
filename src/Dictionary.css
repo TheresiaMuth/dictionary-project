@@ -1,3 +1,36 @@
+.Dictionary h1 {
+  text-align: center;
+  color: #966544;
+  font-family: "Cormorant Unicase", serif;
+  font-size: 74px;
+  font-weight: light;
+}
+
+.Dictionary section {
+  background: whitesmoke;
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 6px;
+  box-shadow: 0 5px 8px 0 rgb(0 0 0 / 8%);
+}
+
 .searchbar {
-  margin: 30px 0;
+  margin: 30px auto;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #000;
+  border: 1px solid #ddd;
+  width: 95%;
+  color: #2c3639;
+}
+
+.searchbar:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.header-container {
+  margin: 0;
+  padding: 25px 0;
+  background-color: #2c3639;
 }

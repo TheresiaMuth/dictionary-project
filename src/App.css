@@ -1,3 +1,9 @@
+body {
+  background: #fff9e75c;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .App-footer {
   text-align: center;
   margin: 30px 0;

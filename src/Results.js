@@ -11,13 +11,8 @@ export default function Results(props) {
         <section>
           <h2>{props.results.word}</h2>
 
-          <div className="row ">
-            <div className="col-1">
-              <Sound audio={props.results.phonetics[0].audio} />
-            </div>
-            <div className="col g-0 phonetics">
-              /{props.results.phonetics[0].text}/
-            </div>
+          <div className="Sound">
+            <Sound sound={props.results.phonetics[0]} />
           </div>
         </section>
         <section>

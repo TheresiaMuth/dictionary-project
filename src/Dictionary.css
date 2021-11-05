@@ -8,8 +8,8 @@
 
 .Dictionary section {
   background: whitesmoke;
-  padding: 30px;
-  margin: 20px 30px;
+  padding: 25px 30px;
+  margin: 20px 45px;
   border-radius: 6px;
   box-shadow: 0 5px 8px 0 rgb(0 0 0 / 8%);
 }
@@ -20,7 +20,7 @@
   padding: 6px 10px;
   color: #000;
   border: 1px solid #ddd;
-  width: 85%;
+  width: 80%;
   color: #2c3639;
 }
 

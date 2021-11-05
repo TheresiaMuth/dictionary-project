@@ -9,18 +9,18 @@
 .Dictionary section {
   background: whitesmoke;
   padding: 30px;
-  margin: 20px 0;
+  margin: 20px 30px;
   border-radius: 6px;
   box-shadow: 0 5px 8px 0 rgb(0 0 0 / 8%);
 }
 
 .searchbar {
   margin: 30px auto;
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 6px 10px;
   color: #000;
   border: 1px solid #ddd;
-  width: 95%;
+  width: 85%;
   color: #2c3639;
 }
 

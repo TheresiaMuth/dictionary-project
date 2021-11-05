@@ -18,6 +18,9 @@ export default function App() {
               Open-source code
             </a>
             <span> by Theresia Muth</span>
+            <br />
+            <span>Photos provided by </span>
+            <a href="https://www.pexels.com">Pexels</a>
           </footer>
         </div>
       </div>

@@ -29,7 +29,10 @@ export default function Dictionary() {
     let apiDictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchterm}`;
     axios
       .get(apiDictionaryUrl)
-      .then(handleDictionaryResponse)
+      .then((response) => {
+        handleDictionaryResponse(response);
+        // fetch picture here with sparate failsafe
+      })
       .catch((e) => console.error(e));
   }
 
@@ -38,7 +41,7 @@ export default function Dictionary() {
     const pexelsApiKey =
       "563492ad6f917000010000010d220bb84bac416baa421ece3edfa9da";
 
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${searchterm}&per_page=8`;
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${searchterm}&per_page=4`;
     let authorization = { Authorization: `Bearer ${pexelsApiKey}` };
     axios
       .get(pexelsApiUrl, { headers: authorization })
@@ -76,10 +79,14 @@ export default function Dictionary() {
       </div>
 
       <div className="container">
-        <Results results={dictionaryResults} />
-      </div>
-      <div className="container">
-        <Pictures pictures={pictureResults} searchterm={searchterm} />
+        <div className="row">
+          <div className="col-md-8">
+            <Results results={dictionaryResults} />
+          </div>
+          <div className="col-md-4">
+            <Pictures pictures={pictureResults} searchterm={searchterm} />
+          </div>
+        </div>
       </div>
     </div>
   );

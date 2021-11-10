@@ -5,7 +5,7 @@ import Pictures from "./Pictures";
 import "./Dictionary.css";
 
 export default function Dictionary() {
-  let [searchterm, setSearchterm] = useState("friend");
+  let [searchTerm, setSearchTerm] = useState("happiness");
   let [dictionaryResults, setDictionaryResults] = useState(null);
   let [pictureResults, setPictureResults] = useState(null);
 
@@ -17,31 +17,12 @@ export default function Dictionary() {
     setPictureResults(response.data);
   }
 
-  function search(event) {
-    event.preventDefault();
-    fetchDictionaryEntry();
-    fetchPictures();
-    setSearchterm("");
-  }
-
-  function fetchDictionaryEntry() {
-    //Documentation: https://dictionaryapi.dev/
-    let apiDictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchterm}`;
-    axios
-      .get(apiDictionaryUrl)
-      .then((response) => {
-        handleDictionaryResponse(response);
-        // fetch picture here with sparate failsafe
-      })
-      .catch((e) => console.error(e));
-  }
-
-  function fetchPictures() {
+  function fetchPictures(pictureSearchTerm) {
     //Documentation: https://www.pexels.com/de-de/api/documentation/
     const pexelsApiKey =
       "563492ad6f917000010000010d220bb84bac416baa421ece3edfa9da";
 
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${searchterm}&per_page=4`;
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${pictureSearchTerm}&per_page=4`;
     let authorization = { Authorization: `Bearer ${pexelsApiKey}` };
     axios
       .get(pexelsApiUrl, { headers: authorization })
@@ -49,14 +30,32 @@ export default function Dictionary() {
       .catch((e) => console.error(e));
   }
 
+  function fetchDictionaryEntry(dictionarySearchTerm) {
+    //Documentation: https://dictionaryapi.dev/
+    let apiDictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${dictionarySearchTerm}`;
+    axios
+      .get(apiDictionaryUrl)
+      .then((response) => {
+        handleDictionaryResponse(response);
+        fetchPictures(dictionarySearchTerm);
+      })
+      .catch((e) => console.error(e));
+  }
+
+  function search(event) {
+    event.preventDefault();
+    fetchDictionaryEntry(searchTerm);
+    setSearchTerm("");
+  }
+
   function handleSearchtermChange(event) {
-    setSearchterm(event.target.value);
+    setSearchTerm(event.target.value);
   }
 
   useEffect(() => {
-    fetchDictionaryEntry();
-    fetchPictures();
-    setSearchterm("");
+    fetchDictionaryEntry(searchTerm);
+    fetchPictures(searchTerm);
+    setSearchTerm("");
   }, []);
 
   return (
@@ -72,7 +71,7 @@ export default function Dictionary() {
               autoComplete="off"
               placeholder="What Word are you looking for?"
               onChange={handleSearchtermChange}
-              value={searchterm}
+              value={searchTerm}
             />
           </form>
         </div>
@@ -84,7 +83,7 @@ export default function Dictionary() {
             <Results results={dictionaryResults} />
           </div>
           <div className="col-md-4">
-            <Pictures pictures={pictureResults} searchterm={searchterm} />
+            <Pictures pictures={pictureResults} searchterm={searchTerm} />
           </div>
         </div>
       </div>
